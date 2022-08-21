@@ -76,3 +76,4 @@ https://www.figma.com/file/6nxgo4iLligzPZgFsq2Xyh/%E6%94%BF%E5%85%9A%E6%8A%95%E7
 
 ### チームメンバ
 武田喜一
+王蕾
