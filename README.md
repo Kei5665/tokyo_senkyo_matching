@@ -78,3 +78,4 @@ https://www.figma.com/file/6nxgo4iLligzPZgFsq2Xyh/%E6%94%BF%E5%85%9A%E6%8A%95%E7
 武田喜一
 王蕾
 岩木俊幸
+武田凌也
