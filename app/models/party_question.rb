@@ -1,5 +1,5 @@
 class PartyQuestion < ApplicationRecord
-  belongs_to :questions
-  belongs_to :parties
+  belongs_to :question
+  belongs_to :party
   validates :opinion, presence: true
 end
