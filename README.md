@@ -75,7 +75,7 @@ https://www.figma.com/file/6nxgo4iLligzPZgFsq2Xyh/%E6%94%BF%E5%85%9A%E6%8A%95%E7
 ![スクリーンショット 2022-08-15 18 46 06](https://user-images.githubusercontent.com/64511596/184649336-b90e6632-dd08-4d30-9e3f-5ac01e227f3e.png)
 
 ### チームメンバ
-武田喜一
-王蕾
-岩木俊幸
-武田凌也
+  武田喜一
+  王蕾
+  岩木俊幸
+  武田凌也
