@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_153434) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_26_154000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -69,6 +69,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_153434) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "party_questions", force: :cascade do |t|
+    t.bigint "questions_id", null: false
+    t.bigint "parties_id", null: false
+    t.integer "opinion", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["parties_id"], name: "index_party_questions_on_parties_id"
+    t.index ["questions_id"], name: "index_party_questions_on_questions_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -132,6 +142,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_26_153434) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "party_questions", "parties", column: "parties_id"
+  add_foreign_key "party_questions", "questions", column: "questions_id"
   add_foreign_key "posts", "areas"
   add_foreign_key "quests", "posts"
   add_foreign_key "quests", "users"
