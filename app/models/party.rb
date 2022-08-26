@@ -1,3 +1,3 @@
 class Party < ApplicationRecord
-  validates :context, presence: true
+  validates :name, presence: true
 end

@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  validates :context, presence: true
+  validates :content, presence: true
 end
