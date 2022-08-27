@@ -1,5 +1,6 @@
 class PartyQuestion < ApplicationRecord
   belongs_to :question
   belongs_to :party
-  validates :opinion, presence: true
+
+  enum opinion: [ "賛成", "反対", "中立" ]
 end
