@@ -1,3 +1,3 @@
 class Opinion < ApplicationRecord
-  validates :type, presence: true
+  validates :category, presence: true
 end
