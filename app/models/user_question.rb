@@ -26,4 +26,42 @@ class UserQuestion < ApplicationRecord
       self.pending!
     end
   end
+
+  def result_positive?
+    self.great? || self.good?
+  end
+
+  def result_negative?
+    self.bad?
+  end
+
+  # ユーザ意見が政党と一致する場合
+  def agree_with_party(party_question)
+    both_agree(party_question) || both_disagree(party_question)
+  end
+
+  # ユーザ意見が政党と不一致する場合
+  def disagree_with_party(party_question)
+    positive_disagree(party_question) || negative_disagree(party_question)
+  end
+
+  # 議題に対して、ユーザも政党も賛成する場合
+  def both_agree(party_question)
+    self.result_positive? && party_question.agree?
+  end
+
+  # 議題に対して、ユーザも政党も反対する場合
+  def both_disagree(party_question)
+    self.result_negative? && party_question.disagree?
+  end
+
+  # 議題に対して、ユーザが賛成で、政党が反対する場合
+  def positive_disagree(party_question)
+    self.result_positive? && party_question.disagree?
+  end
+
+  # 議題に対して、ユーザが反対で、政党が賛成する場合
+  def negative_disagree(party_question)
+    self.result_negative? && party_question.agree?
+  end
 end
