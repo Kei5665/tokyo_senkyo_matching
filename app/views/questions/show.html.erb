@@ -5,10 +5,10 @@
   <div class="card w-full bg-base-100 shadow-xl">
     <div class="card-body">
       <div class="card-actions justify-end">
-        <div class="alert alert-green w-full">超賛成</div>
-        <div class="alert alert-blue w-full">賛成</div>
-        <div class="alert alert-pink w-full">反対</div>
-        <div class="alert alert-secondary w-full">関心なし</div>
+        <%= button_to "超賛成", answer_question_path(@question, result: "超賛成"), class: "alert alert-green w-full" %>
+        <%= button_to "賛成", answer_question_path(@question, result: "賛成"), class: "alert alert-blue w-full" %>
+        <%= button_to "反対", answer_question_path(@question, result: "反対"), class: "alert alert-pink w-full" %>
+        <%= button_to "無回答", answer_question_path(@question, result: "無回答"), class: "alert alert-secondary w-full" %>
       </div>
     </div>
   </div>
