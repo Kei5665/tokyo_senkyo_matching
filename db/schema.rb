@@ -23,9 +23,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_052232) do
   create_table "party_questions", force: :cascade do |t|
     t.bigint "question_id", null: false
     t.bigint "party_id", null: false
+    t.integer "opinion", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "opinion", null: false
     t.index ["party_id"], name: "index_party_questions_on_party_id"
     t.index ["question_id"], name: "index_party_questions_on_question_id"
   end
@@ -36,6 +36,37 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_052232) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_parties", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "party_id", null: false
+    t.integer "point", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["party_id"], name: "index_user_parties_on_party_id"
+    t.index ["user_id"], name: "index_user_parties_on_user_id"
+  end
+
+  create_table "user_questions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "question_id", null: false
+    t.integer "result"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_user_questions_on_question_id"
+    t.index ["user_id"], name: "index_user_questions_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "party_questions", "parties"
   add_foreign_key "party_questions", "questions"
+  add_foreign_key "user_parties", "parties"
+  add_foreign_key "user_parties", "users"
+  add_foreign_key "user_questions", "questions"
+  add_foreign_key "user_questions", "users"
 end

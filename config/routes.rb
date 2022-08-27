@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'static_pages#top'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/guest_login', to: 'user_sessions#guest_login'
+  get '/result', to: 'static_pages#result'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+
+  resources :questions, only: %i[show] do
+    post 'answer', on: :member
+  end
 end
