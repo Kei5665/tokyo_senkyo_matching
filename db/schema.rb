@@ -10,32 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_26_154000) do
+ActiveRecord::Schema[7.0].define(version: 20_220_826_154_000) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "parties", force: :cascade do |t|
-    t.string "name", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'parties', force: :cascade do |t|
+    t.string 'name', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "party_questions", force: :cascade do |t|
-    t.bigint "question_id", null: false
-    t.bigint "party_id", null: false
-    t.integer "opinion", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["party_id"], name: "index_party_questions_on_party_id"
-    t.index ["question_id"], name: "index_party_questions_on_question_id"
+  create_table 'party_questions', force: :cascade do |t|
+    t.bigint 'question_id', null: false
+    t.bigint 'party_id', null: false
+    t.integer 'opinion', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['party_id'], name: 'index_party_questions_on_party_id'
+    t.index ['question_id'], name: 'index_party_questions_on_question_id'
   end
 
-  create_table "questions", force: :cascade do |t|
-    t.text "content", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'questions', force: :cascade do |t|
+    t.text 'content', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  add_foreign_key "party_questions", "parties"
-  add_foreign_key "party_questions", "questions"
+  add_foreign_key 'party_questions', 'parties'
+  add_foreign_key 'party_questions', 'questions'
 end
