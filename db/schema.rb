@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_27_023820) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_27_023135) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -31,8 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_023820) do
     t.bigint "party_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "opinion_id"
-    t.index ["opinion_id"], name: "index_party_questions_on_opinion_id"
+    t.integer "opinion", null: false
     t.index ["party_id"], name: "index_party_questions_on_party_id"
     t.index ["question_id"], name: "index_party_questions_on_question_id"
   end
@@ -43,7 +42,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_27_023820) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "party_questions", "opinions"
   add_foreign_key "party_questions", "parties"
   add_foreign_key "party_questions", "questions"
 end
