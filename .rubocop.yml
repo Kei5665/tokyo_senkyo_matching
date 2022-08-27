@@ -20,3 +20,5 @@ Style/ClassAndModuleChildren:
   Enabled: false
 Style/GlobalStdStream:
   Enabled: false
+Lint/DuplicateRequire:
+  Enabled: false
