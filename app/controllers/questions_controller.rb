@@ -10,15 +10,14 @@ class QuestionsController < ApplicationController
     result = params[:result]
 
     # ユーザのresultを更新する
-    # result更新にエラーが出たので、後で対応
-    # case result
-    #   when "超賛成"
-    #     user_question.result.great!
-    #   when "賛成"
-    #     user_question.result.good!
-    #   when "反対"
-    #     user_question.result.bad!
-    # end
+    case result
+      when "超賛成"
+        @user_question.great!
+      when "賛成"
+        @user_question.good!
+      when "反対"
+        @user_question.bad!
+    end
 
     # 賛成/反対の意見を持つ政党リストを取得する
 
