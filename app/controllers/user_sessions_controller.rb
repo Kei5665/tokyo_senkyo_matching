@@ -3,11 +3,18 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
-    redirect_to root_path, alert: 'すでにログインしています' if current_user # ログインしてる場合はユーザーを作成しない
+    redirect_to root_path, alert: 'すでにログインしています'
 
     random_value = SecureRandom.hex
     user = User.create!(name: random_value, email: "test_#{random_value}@example.com")
-    auto_login(user)
+    login(user)
     redirect_to answers_path, notice: 'スタート！'
+  end
+
+  private
+
+  def login(user)
+    session[:user_id] = user.id.to_s
+    @current_user = user
   end
 end
