@@ -27,10 +27,12 @@ class UserQuestion < ApplicationRecord
     end
   end
 
+  # ユーザ意見が超賛成か賛成の場合
   def result_positive?
     self.great? || self.good?
   end
 
+  # ユーザ意見が反対の場合
   def result_negative?
     self.bad?
   end
@@ -47,21 +49,21 @@ class UserQuestion < ApplicationRecord
 
   # 議題に対して、ユーザも政党も賛成する場合
   def both_agree(party_question)
-    self.result_positive? && party_question.agree?
+    result_positive? && party_question.agree?
   end
 
   # 議題に対して、ユーザも政党も反対する場合
   def both_disagree(party_question)
-    self.result_negative? && party_question.disagree?
+    result_negative? && party_question.disagree?
   end
 
   # 議題に対して、ユーザが賛成で、政党が反対する場合
   def positive_disagree(party_question)
-    self.result_positive? && party_question.disagree?
+    result_positive? && party_question.disagree?
   end
 
   # 議題に対して、ユーザが反対で、政党が賛成する場合
   def negative_disagree(party_question)
-    self.result_negative? && party_question.agree?
+    result_negative? && party_question.agree?
   end
 end
