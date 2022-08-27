@@ -3,12 +3,15 @@ class UserSessionsController < ApplicationController
   end
 
   def guest_login
+    first_question = Question.first
+
     redirect_to root_path, alert: 'すでにログインしています'
 
     random_value = SecureRandom.hex
     user = User.create!(name: random_value, email: "test_#{random_value}@example.com")
     login(user)
-    redirect_to answers_path, notice: 'スタート！'
+
+    redirect_to question_path(first_question), notice: 'スタート！'
   end
 
   private
