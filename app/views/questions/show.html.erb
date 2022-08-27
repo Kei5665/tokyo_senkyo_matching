@@ -1,6 +1,15 @@
-<div>
+<div class="mx-auto">
   <h1 class="font-bold text-5xl">東京選挙マッチング</h1>
-  <h1 class="font-bold text-2xl">Q <%= @question.id %> / 10</h1>
-  <h1 class="font-bold text-3xl">環境</h1>
-  <h1 class="font-bold text-4xl"><%= @question.content %></h1>
+  <h1 class="font-bold text-2xl my-8">Q <%= @question.id %> / 10</h1>
+  <h2 class="font-bold text-4xl my-8"><%= @question.content %></h2>
+  <div class="card w-full bg-base-100 shadow-xl">
+    <div class="card-body">
+      <div class="card-actions justify-end">
+        <div class="alert alert-green w-full">超賛成</div>
+        <div class="alert alert-blue w-full">賛成</div>
+        <div class="alert alert-pink w-full">反対</div>
+        <div class="alert alert-secondary w-full">関心なし</div>
+      </div>
+    </div>
+  </div>
 </div>
