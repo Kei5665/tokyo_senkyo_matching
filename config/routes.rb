@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'static_pages#top'
 
   get '/guest_login', to: 'user_sessions#guest_login'
+  get '/result', to: 'static_pages#result'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :questions, only: %i[show] do
