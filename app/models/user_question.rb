@@ -13,4 +13,17 @@ class UserQuestion < ApplicationRecord
   def next?
     self.next.present?
   end
+
+  def update_result(result)
+    case result
+    when "超賛成"
+      self.great!
+    when "賛成"
+      self.good!
+    when "反対"
+      self.bad!
+    when "無回答"
+      self.pending!
+    end
+  end
 end

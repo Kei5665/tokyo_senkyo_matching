@@ -10,26 +10,21 @@ class QuestionsController < ApplicationController
     result = params[:result]
 
     # ユーザのresultを更新する
-    case result
-      when "超賛成"
-        @user_question.great!
-      when "賛成"
-        @user_question.good!
-      when "反対"
-        @user_question.bad!
-    end
+    @user_question.update_result(result)
 
     # 賛成/反対の意見を持つ政党リストを取得する
 
 
-    # user_partiesテーブルのpointを加算する
-    count_point(result)
+    # user_partiesテーブルのpointを計算する
+    calculate_point(result)
 
     # next_questionへ遷移する
     next_page(@user_question)
   end
 
-  def count_point(result)
+  private
+
+  def calculate_point(result)
   end
 
   def next_page(user_question)
