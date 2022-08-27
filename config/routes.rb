@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'staric_pages#top'
+  root 'static_pages#top'
 
   get '/guest_login', to: 'user_sessions#guest_login'
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
