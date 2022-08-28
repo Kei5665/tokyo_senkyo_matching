@@ -2,8 +2,10 @@ class UserQuestion < ApplicationRecord
   belongs_to :user
   belongs_to :question
 
+  # ユーザー意見：超賛成、賛成、反対、無回答
   enum :result, { great: 0, good: 1, bad: 2, pending: 3 }
 
+  # 次の質問ページへ遷移するため、次の質問を取得する
   def next
     # user_questions = UserQuestion.where(user_id: current_user.id)
     user_questions = UserQuestion.where(user_id: 1)
@@ -14,6 +16,7 @@ class UserQuestion < ApplicationRecord
     self.next.present?
   end
 
+  # ユーザーの選択意見をテーブル値に保存する
   def update_result(result)
     case result
     when "超賛成"

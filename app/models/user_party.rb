@@ -2,6 +2,7 @@ class UserParty < ApplicationRecord
   belongs_to :user
   belongs_to :party
 
+  # ユーザーに紐づいた政党のpointを降順に並べて取得する
   scope :ranking, -> { order(point: :desc) }
 
   def calculate_point(user_question)
