@@ -5,11 +5,15 @@ class UserSessionsController < ApplicationController
   def guest_login
     first_question = Question.first
 
-    redirect_to root_path, alert: 'すでにログインしています'
-
     random_value = SecureRandom.hex
     user = User.create!(name: random_value, email: "test_#{random_value}@example.com")
     login(user)
+
+    # ユーザーと全政党の紐付け
+    user.party_relation
+
+    # ユーザーと全部の質問の紐付け
+    user.question_relation
 
     redirect_to question_path(first_question), notice: 'スタート！'
   end

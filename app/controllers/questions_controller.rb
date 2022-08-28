@@ -4,8 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def answer
-    # user = current_user
-    user = User.find(1)
+    user = current_user
     user_question = user.user_questions.find_by(question_id: params[:id])
     result = params[:result]
 
@@ -31,7 +30,7 @@ class QuestionsController < ApplicationController
       next_question = user_question.next
       redirect_to question_path(next_question)
     else
-      redirect_to 結果ページ_path
+      redirect_to result_path
     end
   end
 end
