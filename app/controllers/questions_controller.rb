@@ -26,8 +26,8 @@ class QuestionsController < ApplicationController
   # 次がなければ、結果ページへ遷移する
   def next_page(user_question)
     if user_question.next?
-      next_question = user_question.next
-      redirect_to question_path(next_question.question_id)
+      next_user_question = user_question.next
+      redirect_to question_path(next_user_question.question_id)
     else
       redirect_to result_path
     end
