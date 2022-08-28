@@ -1,12 +1,10 @@
 class QuestionsController < ApplicationController
   def show
     @question =Question.find(params[:id])
-    @current_user = User.find(params[user_id])
   end
 
   def answer
-    # user = @current_user
-    user_question = user.user_questions.find_by(question_id: params[:id])
+    user_question = current_user.user_questions.find_by(question_id: params[:id])
     result = params[:result]
 
     # ユーザのresultを更新する
@@ -14,7 +12,7 @@ class QuestionsController < ApplicationController
 
     # ユーザーに紐づいた政党一覧を取得して
     # ユーザー意見と参照して各政党のpointを計算する
-    user.user_parties.each do |user_party|
+    current_user.user_parties.each do |user_party|
       user_party.calculate_point(user_question)
     end
 

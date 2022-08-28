@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many: :user_parties
-  has_many: :user_questions
+  has_many :user_parties
+  has_many :user_questions
 
   def party_relation
     parties = Party.all
