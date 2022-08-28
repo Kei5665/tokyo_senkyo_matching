@@ -7,12 +7,13 @@ RailsAdmin.config do |config|
   config.authenticate_with do
     # Use sorcery's before filter to auth users
     require_login
+    # redirect_to login_path unless current_user.admin? # 追記
   end
   config.current_user_method(&:current_user)
   config.parent_controller = 'ApplicationController' #追記
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
