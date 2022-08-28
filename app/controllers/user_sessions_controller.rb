@@ -15,7 +15,7 @@ class UserSessionsController < ApplicationController
     # ユーザーと全部の質問の紐付け
     user.question_relation
 
-    redirect_to question_path(first_question, user_id: user.id), notice: 'スタート！'
+    redirect_to question_path(first_question), notice: 'スタート！'
   end
 
   private
