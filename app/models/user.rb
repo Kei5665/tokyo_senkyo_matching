@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-  has_many :user_parties
-  has_many :user_questions
+  has_many :user_parties, dependent: :destroy
+  has_many :user_questions, dependent: :destroy
+
+  authenticates_with_sorcery!
+
+  enum :role, { general: 0, admin: 1 }
 
   def party_relation
     parties = Party.all
