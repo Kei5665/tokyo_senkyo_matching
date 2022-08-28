@@ -6,6 +6,10 @@
 # :magic_login, :external
 Rails.application.config.sorcery.submodules = []
 
+# rails_admin: 
+# Solving incompatibility with authentication in production
+ActionController::Base.send(:include, Sorcery::Controller)
+
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
   # -- core --

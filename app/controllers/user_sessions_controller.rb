@@ -1,14 +1,28 @@
 class UserSessionsController < ApplicationController
-  def new
+  def new; end
+
+  def create
+    user = User.find_by(email: params[:email])
+    if user
+      login_as(user)
+      redirect_to rails_admin_path
+    else
+      render :new
+    end
+  end
+
+  def destroy
+    logout
+    redirect_to root_path
   end
 
   def guest_login
     first_question = Question.first
 
     random_value = SecureRandom.hex
-    user = User.create!(name: random_value, email: "test_#{random_value}@example.com")
-    login(user)
-
+    # email uniqueness validationが設定したので、ゲストログインは必須としない
+    user = User.create!(name: random_value, role: 0)
+    login_as(user)
     # ユーザーと全政党の紐付け
     user.party_relation
 
@@ -20,7 +34,7 @@ class UserSessionsController < ApplicationController
 
   private
 
-  def login(user)
+  def login_as(user)
     session[:user_id] = user.id
     @current_user = user
   end

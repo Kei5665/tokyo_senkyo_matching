@@ -57,6 +57,9 @@ gem 'rails_admin'
 # login
 gem 'sorcery'
 
+# Authorization
+gem 'cancancan'
+
 # ランキング棒グラフに値を渡すため
 gem 'gon'
 
