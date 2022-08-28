@@ -3,14 +3,18 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  ## == Sorcery ==
+  config.authenticate_with do
+    # Use sorcery's before filter to auth users
+    # pathはmain_app.XX_pathの形式が必要
+    require_login
+    # redirect_to main_app.login_path
+  end
+  config.current_user_method(&:current_user)
+  config.parent_controller = 'ApplicationController' #追記
 
   ## == CancanCan ==
-  # config.authorize_with :cancancan
+  config.authorize_with :cancancan
 
   ## == Pundit ==
   # config.authorize_with :pundit
