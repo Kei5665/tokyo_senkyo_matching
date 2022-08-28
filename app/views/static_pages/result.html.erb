@@ -1,75 +1,55 @@
 <div class="mx-auto max-w-lg text-center">
   <h1 class="font-bold text-5xl">あなたの意見と最もマッチングした政党は…</h1>
-  <h1 class="font-bold text-5xl my-8">民主党！</h1>
+  <h1 class="font-bold text-5xl my-8"><%= @results.first.party.name %></h1>
   <div class="card w-full bg-base-100 shadow-xl my-8">
     <div class="card-body">
       <h1 class="font-bold text-2xl my-8">あなたのマッチング結果詳細</h1>
 
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-pink"
-            data-value="50"
-          ></div>
-        </div>
-      </div>
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-gradient progress-blue"
-            data-value="50"
-          ></div>
-        </div>
-      </div>
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-gradient progress-red"
-            data-value="50"
-          ></div>
-        </div>
-      </div>
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-gradient progress-green"
-            data-value="50"
-          ></div>
-        </div>
-      </div>
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-gradient progress-orange"
-            data-value="50"
-          ></div>
-        </div>
-      </div>
-      <div class="w-full">
-        <span class="text-blue-gray-500 text-sm font-normal leading-6">政党名</span>
-        <div class="progress" percentage="true">
-          <div
-            class="progress-bar progress-gradient progress-dark"
-            data-value="50"
-          ></div>
-        </div>
+      <div class="shadow-lg rounded-lg overflow-hidden">
+        <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+        <canvas class="p-10" id="chartBar"></canvas>
       </div>
 
     </div>
   </div>
-      <button
-        class="button button-gradient button-pink button-lg mb-3"
-        data-ripple-light="true"
-      >
+      <button class="button button-gradient button-pink button-lg mb-3" data-ripple-light="true">
         おすすめの動画
       </button>
 </div>
-<script src="node_modules/@material-tailwind/html/scripts/progress.js"></script>
 
-<!-- from cdn -->
-<script src="https://unpkg.com/@material-tailwind/html@latest/scripts/progress.js"></script>
+<!-- Required chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Chart bar -->
+<script>
+  const labelsBarChart = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+  ];
+  const dataBarChart = {
+    labels: labelsBarChart,
+    datasets: [
+      {
+        label: "My First dataset",
+        backgroundColor: "hsl(252, 82.9%, 67.8%)",
+        borderColor: "hsl(252, 82.9%, 67.8%)",
+        data: [0, 10, 5, 2, 20, 30, 45],
+      },
+    ],
+  };
+
+  const configBarChart = {
+    type: "bar",
+    data: dataBarChart,
+    options: {},
+  };
+
+  var chartBar = new Chart(
+    document.getElementById("chartBar"),
+    configBarChart
+  );
+</script>
