@@ -1,10 +1,11 @@
 class QuestionsController < ApplicationController
   def show
     @question =Question.find(params[:id])
+    @current_user = User.find(params[user_id])
   end
 
   def answer
-    user = current_user
+    # user = @current_user
     user_question = user.user_questions.find_by(question_id: params[:id])
     result = params[:result]
 
