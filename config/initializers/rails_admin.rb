@@ -6,8 +6,9 @@ RailsAdmin.config do |config|
   ## == Sorcery ==
   config.authenticate_with do
     # Use sorcery's before filter to auth users
+    # pathはmain_app.XX_pathの形式が必要
     require_login
-    # redirect_to login_path unless current_user.admin? # 追記
+    redirect_to main_app.login_path unless current_user.admin? # 追記
   end
   config.current_user_method(&:current_user)
   config.parent_controller = 'ApplicationController' #追記
