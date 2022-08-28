@@ -4,9 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def answer
-    # user = current_user
-    user = User.find(1)
-    user_question = user.user_questions.find_by(question_id: params[:id])
+    user_question = current_user.user_questions.find_by(question_id: params[:id])
     result = params[:result]
 
     # ユーザのresultを更新する
@@ -14,7 +12,7 @@ class QuestionsController < ApplicationController
 
     # ユーザーに紐づいた政党一覧を取得して
     # ユーザー意見と参照して各政党のpointを計算する
-    user.user_parties.each do |user_party|
+    current_user.user_parties.each do |user_party|
       user_party.calculate_point(user_question)
     end
 
@@ -31,7 +29,7 @@ class QuestionsController < ApplicationController
       next_question = user_question.next
       redirect_to question_path(next_question)
     else
-      redirect_to 結果ページ_path
+      redirect_to result_path
     end
   end
 end
