@@ -54,6 +54,9 @@ gem 'bootsnap', require: false
 # admin
 gem 'rails_admin'
 
+# login
+gem 'sorcery'
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
 
