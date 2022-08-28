@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  skip_before_action :require_login
+
   def show
     @question =Question.find(params[:id])
   end

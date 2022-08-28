@@ -3,11 +3,12 @@ RailsAdmin.config do |config|
 
   ### Popular gems integration
 
-  ## == Devise ==
-  # config.authenticate_with do
-  #   warden.authenticate! scope: :user
-  # end
-  # config.current_user_method(&:current_user)
+  ## == Sorcery ==
+  config.authenticate_with do
+    # Use sorcery's before filter to auth users
+    require_login
+  end
+  config.current_user_method(&:current_user)
 
   ## == CancanCan ==
   # config.authorize_with :cancancan
