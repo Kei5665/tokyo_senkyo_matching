@@ -6,7 +6,7 @@
       <h1 class="font-bold text-2xl my-8">あなたのマッチング結果詳細</h1>
 
       <div class="shadow-lg rounded-lg overflow-hidden">
-        <div class="py-3 px-5 bg-gray-50">Bar chart</div>
+        <div class="py-3 px-5 bg-gray-50">マッチした上位3政党</div>
         <canvas class="p-10" id="chartBar"></canvas>
       </div>
 
@@ -23,22 +23,16 @@
 <!-- Chart bar -->
 <script>
   const parties = gon.parties
-  const labelsBarChart = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-  ];
+  const points = gon.points
+  points.push(20);
   const dataBarChart = {
     labels: parties,
     datasets: [
       {
-        label: "My First dataset",
+        label: "マッチポイント",
         backgroundColor: "hsl(252, 82.9%, 67.8%)",
         borderColor: "hsl(252, 82.9%, 67.8%)",
-        data: [20, 30, 45],
+        data: points,
       },
     ],
   };
