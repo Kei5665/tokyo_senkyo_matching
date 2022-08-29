@@ -7,7 +7,7 @@ class UserQuestion < ApplicationRecord
 
   # 次の質問ページへ遷移するため、次の質問を取得する
   def next
-    user_questions = UserQuestion.where(user_id: user_id)
+    user_questions = UserQuestion.where(user_id:)
     user_questions.where("question_id > ?", question_id).first
   end
 

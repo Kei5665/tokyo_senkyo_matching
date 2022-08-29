@@ -11,7 +11,7 @@ RailsAdmin.config do |config|
     # redirect_to main_app.login_path
   end
   config.current_user_method(&:current_user)
-  config.parent_controller = 'ApplicationController' #追記
+  config.parent_controller = "ApplicationController" # 追記
 
   ## == CancanCan ==
   config.authorize_with :cancancan

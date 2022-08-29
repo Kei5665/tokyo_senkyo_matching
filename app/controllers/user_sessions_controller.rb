@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
-  def new; end
+  def new
+  end
 
   def create
     user = User.find_by(email: params[:email])
@@ -29,13 +30,13 @@ class UserSessionsController < ApplicationController
     # ユーザーと全部の質問の紐付け
     user.question_relation
 
-    redirect_to question_path(first_question), notice: 'スタート！'
+    redirect_to question_path(first_question), notice: "スタート！"
   end
 
   private
 
-  def login_as(user)
-    session[:user_id] = user.id
-    @current_user = user
-  end
+    def login_as(user)
+      session[:user_id] = user.id
+      @current_user = user
+    end
 end

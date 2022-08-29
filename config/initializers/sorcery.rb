@@ -6,9 +6,9 @@
 # :magic_login, :external
 Rails.application.config.sorcery.submodules = []
 
-# rails_admin: 
+# rails_admin:
 # Solving incompatibility with authentication in production
-ActionController::Base.send(:include, Sorcery::Controller)
+ActionController::Base.include Sorcery::Controller
 
 # Here you can configure each submodule's features.
 Rails.application.config.sorcery.configure do |config|
@@ -230,7 +230,6 @@ Rails.application.config.sorcery.configure do |config|
   # config.line.bot_prompt = "normal"
   # config.line.user_info_mapping = {name: 'displayName'}
 
-  
   # For information about Discord API
   # https://discordapp.com/developers/docs/topics/oauth2
   # config.discord.key = "xxxxxx"
