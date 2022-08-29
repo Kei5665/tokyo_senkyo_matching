@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
-  
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :questions, only: %i[show] do
