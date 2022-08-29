@@ -12,7 +12,7 @@ class UserParty < ApplicationRecord
     # ユーザーの選択意見
     user_result = user_question.result
 
-    #　ユーザーと政党の意見が一致する場合、政党pointを加点する
+    # 　ユーザーと政党の意見が一致する場合、政党pointを加点する
     if user_question.agree_with_party?(party_question)
       add_point(user_result)
     # ユーザーと政党の意見が正反対の場合、政党pointを減点する
@@ -25,10 +25,11 @@ class UserParty < ApplicationRecord
   # ユーザー意見が超賛成の場合、政党point+2
   # ユーザー意見が賛成の場合、政党point+1
   def add_point(user_result)
-    if user_result == "great"
+    case user_result
+    when 'great'
       self.point += 2
       save
-    elsif user_result == "good"
+    when 'good'
       self.point += 1
       save
     end

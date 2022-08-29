@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
-  def new; end
+  def new
+  end
 
   def create
     @user = login(params[:email], params[:password])
@@ -33,8 +34,8 @@ class UserSessionsController < ApplicationController
 
   private
 
-  def login_as(user)
-    session[:user_id] = user.id
-    @current_user = user
-  end
+    def login_as(user)
+      session[:user_id] = user.id
+      @current_user = user
+    end
 end

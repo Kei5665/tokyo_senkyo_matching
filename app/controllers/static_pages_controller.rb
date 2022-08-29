@@ -1,5 +1,6 @@
 class StaticPagesController < ApplicationController
-  def top; end
+  def top
+  end
 
   def result
     user_parties = UserParty.where(user_id: current_user.id)
