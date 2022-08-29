@@ -239,11 +239,6 @@ Style/EmptyCaseCondition:
 Style/EmptyElse:
   EnforcedStyle: empty
 
-# 空メソッドの場合だけ1行で書かなければいけない理由が無い
-# 「セミコロンは使わない」に寄せた方がルールがシンプル
-Style/EmptyMethod:
-  EnforcedStyle: expanded
-
 # いずれかに揃えるのならば `sprintf` や `format` より String#% が好きです
 Style/FormatString:
   EnforcedStyle: percent
