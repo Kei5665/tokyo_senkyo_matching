@@ -2,13 +2,14 @@
 
 Rails.application.routes.draw do
   root 'static_pages#top'
+  get '/about', to: 'static_pages#about'
+  get '/result', to: 'static_pages#result'
 
   get '/guest_login', to: 'user_sessions#guest_login'
-  get '/result', to: 'static_pages#result'
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
-  
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   resources :questions, only: %i[show] do
