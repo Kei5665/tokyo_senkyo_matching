@@ -24,7 +24,7 @@ class UserSessionsController < ApplicationController
     user = User.create!(name: random_value, role: 0)
     login_as(user)
     # ユーザーと全政党の紐付け
-    user.party_relation
+    user.create_party_relation
 
     # ユーザーと全部の質問の紐付け
     user.question_relation
@@ -34,8 +34,8 @@ class UserSessionsController < ApplicationController
 
   private
 
-  def login_as(user)
-    session[:user_id] = user.id
-    @current_user = user
-  end
+    def login_as(user)
+      session[:user_id] = user.id
+      @current_user = user
+    end
 end
