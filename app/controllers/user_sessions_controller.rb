@@ -26,9 +26,6 @@ class UserSessionsController < ApplicationController
     # ユーザーと全政党の紐付け
     user.create_party_relation
 
-    # ユーザーと全部の質問の紐付け
-    user.question_relation
-
     redirect_to question_path(first_question), notice: 'スタート！'
   end
 

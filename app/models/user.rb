@@ -17,11 +17,4 @@ class User < ApplicationRecord
     record_array = Party.pluck(:id).map { |party_id| { user_id: self.id, party_id: party_id, point: 0 } }
     UserParty.insert_all(record_array)
   end
-
-  def question_relation
-    questions = Question.all
-    questions.each do |question|
-      UserQuestion.create!(user_id: self.id, question_id: question.id)
-    end
-  end
 end
