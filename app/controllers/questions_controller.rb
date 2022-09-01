@@ -29,5 +29,4 @@ class QuestionsController < ApplicationController
     else
       redirect_to result_path
     end
-  end
 end

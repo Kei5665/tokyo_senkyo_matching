@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
   def top; end
 
+  def about; end
+
   def result
     user_parties = current_user.user_parties.ranking
 
