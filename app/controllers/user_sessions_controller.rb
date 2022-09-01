@@ -1,10 +1,10 @@
 class UserSessionsController < ApplicationController
-  def new; end
+  def new
+  end
 
   def create
-    user = User.find_by(email: params[:email])
-    if user
-      login_as(user)
+    @user = login(params[:email], params[:password])
+    if @user
       redirect_to rails_admin_path
     else
       render :new
