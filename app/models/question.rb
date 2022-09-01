@@ -5,6 +5,6 @@ class Question < ApplicationRecord
 
   # 次の質問ページへ遷移するため、次の質問を取得する
   def next_question
-    Question.find_by("id > ?", id)
+    Question.find_by('id > ?', id)
   end
 end

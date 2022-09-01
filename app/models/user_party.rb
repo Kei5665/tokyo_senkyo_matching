@@ -15,15 +15,15 @@ class UserParty < ApplicationRecord
     disagree_user_parties = self.where('party_id IN (?)', disagree_party_ids)
 
     case user_result
-    when "great"
-      agree_user_parties.update_all("point = point + 2")
-      disagree_user_parties.update_all("point = point - 1")
-    when "good"
-      agree_user_parties.update_all("point = point + 1")
-      disagree_user_parties.update_all("point = point - 1")
-    when "bad"
-      agree_user_parties.update_all("point = point - 1")
-      disagree_user_parties.update_all("point = point + 1")
+    when 'great'
+      agree_user_parties.update_all('point = point + 2')
+      disagree_user_parties.update_all('point = point - 1')
+    when 'good'
+      agree_user_parties.update_all('point = point + 1')
+      disagree_user_parties.update_all('point = point - 1')
+    when 'bad'
+      agree_user_parties.update_all('point = point - 1')
+      disagree_user_parties.update_all('point = point + 1')
     end
   end
 end

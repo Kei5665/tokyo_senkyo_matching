@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   # user.user_partiesの中身となるデータを配列形式で一括生成して、DBへ挿入
   def create_party_relation
-    record_array = Party.pluck(:id).map { |party_id| { user_id: self.id, party_id: party_id, point: 0 } }
+    record_array = Party.pluck(:id).map {|party_id| { user_id: self.id, party_id: party_id, point: 0 } }
     UserParty.insert_all(record_array)
   end
 

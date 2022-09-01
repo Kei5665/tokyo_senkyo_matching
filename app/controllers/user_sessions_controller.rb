@@ -27,14 +27,4 @@ class UserSessionsController < ApplicationController
 
     redirect_to question_path(first_question), notice: 'スタート！'
   end
-<<<<<<< HEAD
-
-  private
-
-    def login_as(user)
-      session[:user_id] = user.id
-      @current_user = user
-    end
-=======
->>>>>>> develop
 end

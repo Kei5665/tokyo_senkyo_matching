@@ -17,16 +17,17 @@ class QuestionsController < ApplicationController
 
   private
 
-  def set_question
-    @question =Question.find(params[:id])
-  end
+    def set_question
+      @question = Question.find(params[:id])
+    end
 
-  # 次の質問が存在すれば、次の詳細ページへ遷移
-  # 次がなければ、結果ページへ遷移する
-  def next_page(question)
-    if question.next_question.present?
-      redirect_to question_path(question.next_question)
-    else
-      redirect_to result_path
+    # 次の質問が存在すれば、次の詳細ページへ遷移
+    # 次がなければ、結果ページへ遷移する
+    def next_page(question)
+      if question.next_question.present?
+        redirect_to question_path(question.next_question)
+      else
+        redirect_to result_path
+      end
     end
 end
