@@ -4,11 +4,9 @@ class QuestionsController < ApplicationController
   def show; end
 
   def answer
-    user_question = current_user.user_questions.find_by(question_id: params[:id])
+    # ユーザと質問を紐付けて、質問回答をDBに保存
     result = params[:result]
-
-    # ユーザのresultを更新する
-    user_question.update_result(result)
+    current_user.save_result(@question, result)
 
     # ユーザーに紐づいた政党一覧を取得して
     # ユーザー意見と参照して各政党のpointを計算する

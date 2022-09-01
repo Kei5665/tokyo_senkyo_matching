@@ -5,20 +5,6 @@ class UserQuestion < ApplicationRecord
   # ユーザー意見：超賛成、賛成、反対、無回答
   enum :result, { great: 0, good: 1, bad: 2, pending: 3 }
 
-  # ユーザーの選択意見をテーブル値に保存する
-  def update_result(result)
-    case result
-    when '超賛成'
-      self.great!
-    when '賛成'
-      self.good!
-    when '反対'
-      self.bad!
-    when '無回答'
-      self.pending!
-    end
-  end
-
   # ユーザ意見が超賛成か賛成の場合
   def result_positive?
     self.great? || self.good?

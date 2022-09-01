@@ -17,4 +17,9 @@ class User < ApplicationRecord
     record_array = Party.pluck(:id).map { |party_id| { user_id: self.id, party_id: party_id, point: 0 } }
     UserParty.insert_all(record_array)
   end
+
+  # ユーザーの回答をDBに保存
+  def save_result(question, result)
+    user_questions.create(question_id: question.id, result: result)
+  end
 end
