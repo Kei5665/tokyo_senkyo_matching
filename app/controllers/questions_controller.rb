@@ -1,6 +1,6 @@
 class QuestionsController < ApplicationController
   def show
-    @question =Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def answer
@@ -22,14 +22,14 @@ class QuestionsController < ApplicationController
 
   private
 
-  # 次の質問が存在すれば、次の詳細ページへ遷移
-  # 次がなければ、結果ページへ遷移する
-  def next_page(user_question)
-    if user_question.next?
-      next_user_question = user_question.next
-      redirect_to question_path(next_user_question.question_id)
-    else
-      redirect_to result_path
+    # 次の質問が存在すれば、次の詳細ページへ遷移
+    # 次がなければ、結果ページへ遷移する
+    def next_page(user_question)
+      if user_question.next?
+        next_user_question = user_question.next
+        redirect_to question_path(next_user_question.question_id)
+      else
+        redirect_to result_path
+      end
     end
-  end
 end

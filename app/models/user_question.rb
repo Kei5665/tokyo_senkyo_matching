@@ -8,7 +8,7 @@ class UserQuestion < ApplicationRecord
   # 次の質問ページへ遷移するため、次の質問を取得する
   def next
     user_questions = UserQuestion.where(user_id: user_id)
-    user_questions.where("question_id > ?", question_id).first
+    user_questions.where('question_id > ?', question_id).first
   end
 
   def next?
@@ -18,13 +18,13 @@ class UserQuestion < ApplicationRecord
   # ユーザーの選択意見をテーブル値に保存する
   def update_result(result)
     case result
-    when "超賛成"
+    when '超賛成'
       self.great!
-    when "賛成"
+    when '賛成'
       self.good!
-    when "反対"
+    when '反対'
       self.bad!
-    when "無回答"
+    when '無回答'
       self.pending!
     end
   end
