@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
-  def show
-    @question =Question.find(params[:id])
-  end
+  before_action :set_question, only: %i[show answer]
+
+  def show; end
 
   def answer
     user_question = current_user.user_questions.find_by(question_id: params[:id])
@@ -16,18 +16,21 @@ class QuestionsController < ApplicationController
       user_party.calculate_point(user_question)
     end
 
-    # next_questionへ遷移する
-    next_page(user_question)
+    # 次のquestion詳細ページへ遷移する
+    next_page(@question)
   end
 
   private
 
+  def set_question
+    @question =Question.find(params[:id])
+  end
+
   # 次の質問が存在すれば、次の詳細ページへ遷移
   # 次がなければ、結果ページへ遷移する
-  def next_page(user_question)
-    if user_question.next?
-      next_user_question = user_question.next
-      redirect_to question_path(next_user_question.question_id)
+  def next_page(question)
+    if question.next_question.present?
+      redirect_to question_path(question.next_question)
     else
       redirect_to result_path
     end
