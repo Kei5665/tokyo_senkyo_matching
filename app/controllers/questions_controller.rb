@@ -8,11 +8,8 @@ class QuestionsController < ApplicationController
     result = params[:result]
     current_user.save_result(@question, result)
 
-    # ユーザーに紐づいた政党一覧を取得して
     # ユーザー意見と参照して各政党のpointを計算する
-    current_user.user_parties.each do |user_party|
-      user_party.calculate_point(user_question)
-    end
+    current_user.user_parties.calculate_point(@question, result)
 
     # 次のquestion詳細ページへ遷移する
     next_page(@question)
