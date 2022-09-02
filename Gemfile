@@ -73,6 +73,10 @@ group :development, :test do
   # Lint check
   gem 'rubocop'
   gem 'rubocop-rails'
+  # Test
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+
 end
 
 group :development do

@@ -14,8 +14,11 @@ module App
     config.generators do |g|
       g.skip_routes true # ルーティングを追加しない
       g.assets false # アセットファイルを生成しない
-      g.test_framework false # テストを生成しない
       g.helper false # ヘルパーファイルを生成しない
+      g.test_framework :rspec,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false
     end
     # Configuration for the application, engines, and railties goes here.
     #
