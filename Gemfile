@@ -74,8 +74,8 @@ group :development, :test do
   gem 'rubocop'
   gem 'rubocop-rails'
   # Test
-  gem 'rspec-rails'
   gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
