@@ -4,19 +4,12 @@ class StaticPagesController < ApplicationController
   def about; end
 
   def result
-    user_parties = UserParty.where(user_id: current_user.id)
-    @results = user_parties.ranking
+    user_parties = current_user.user_parties.ranking
 
-    parties = []
-    points = []
+    @parties = user_parties.joins(:party).pluck(:name)
+    points = user_parties.pluck(:point)
 
-    @results.each do |result|
-      point = result.point
-      party_name = result.party.name
-      parties.push(party_name)
-      points.push(point)
-    end
-    gon.parties = parties
+    gon.parties = @parties
     gon.points = points
   end
 end

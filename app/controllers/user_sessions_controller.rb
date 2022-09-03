@@ -23,10 +23,7 @@ class UserSessionsController < ApplicationController
     user = User.create!(name: random_value, role: 0)
     auto_login(user)
     # ユーザーと全政党の紐付け
-    user.party_relation
-
-    # ユーザーと全部の質問の紐付け
-    user.question_relation
+    user.create_party_relation
 
     redirect_to question_path(first_question), notice: 'スタート！'
   end

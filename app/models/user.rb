@@ -9,17 +9,14 @@ class User < ApplicationRecord
 
   enum :role, { general: 0, admin: 1 }
 
-  def party_relation
-    parties = Party.all
-    parties.each do |party|
-      UserParty.create!(user_id: self.id, party_id: party.id, point: 0)
-    end
+  # user.user_partiesの中身となるデータを配列形式で一括生成して、DBへ挿入
+  def create_party_relation
+    record_array = Party.pluck(:id).map {|party_id| { user_id: self.id, party_id: party_id, point: 0 } }
+    UserParty.insert_all(record_array)
   end
 
-  def question_relation
-    questions = Question.all
-    questions.each do |question|
-      UserQuestion.create!(user_id: self.id, question_id: question.id)
-    end
+  # ユーザーの回答をDBに保存
+  def save_result(question, result)
+    user_questions.create(question_id: question.id, result: result)
   end
 end

@@ -1,0 +1,3 @@
+--color  # 出力結果を色分け
+--require rails_helper # rails_helperの読み込み
+--format documentation  # 出力結果をドキュメント風に見やすくする
