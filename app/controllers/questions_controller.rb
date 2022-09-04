@@ -5,11 +5,11 @@ class QuestionsController < ApplicationController
 
   def answer
     # ユーザと質問を紐付けて、質問回答をDBに保存
-    result = params[:result]
-    current_user.save_result(@question, result)
+    user_result = params[:result]
+    current_user.save_result(@question, user_result)
 
     # ユーザー意見と参照して各政党のpointを計算する
-    current_user.user_parties.calculate_point(@question, result)
+    current_user.user_parties.calculate_point(@question, user_result)
 
     # 次のquestion詳細ページへ遷移する
     next_page(@question)
