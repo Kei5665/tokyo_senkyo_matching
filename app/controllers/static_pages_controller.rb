@@ -6,7 +6,7 @@ class StaticPagesController < ApplicationController
   def result
     user_parties = current_user.user_parties.ranking
 
-    @parties = user_parties.joins(:party).pluck(:name)
+    @parties = user_parties.pluck(:name)
     points = user_parties.pluck(:point)
 
     gon.parties = @parties
