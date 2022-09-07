@@ -17,6 +17,7 @@ RSpec.describe 'Questions', type: :system do
     visit root_path
     click_on 'スタート'
     click_on '超賛成'
+    expect(page).to have_content '議題_2'
     click_on '超賛成'
   end
 
