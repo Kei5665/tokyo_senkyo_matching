@@ -73,6 +73,9 @@ group :development, :test do
   # Lint check
   gem 'rubocop'
   gem 'rubocop-rails'
+  # Test
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -92,4 +95,3 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
-gem 'sassc-rails'
