@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "csso-cli": "^4.0.1"
+  }
+}
