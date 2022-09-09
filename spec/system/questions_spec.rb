@@ -62,8 +62,7 @@ RSpec.describe 'Questions', type: :system do
       party1_agree_question2
       party2_disagree_question2
       click_on '無回答'
-      # capybaraを0.01秒待たせる
-      sleep 0.01
+      expect(page).to have_content '議題_2'
     end
 
     context '一つ目は無回答で、次の質問はユーザが超賛成を押した場合' do
