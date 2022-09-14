@@ -79,3 +79,8 @@ https://www.figma.com/file/6nxgo4iLligzPZgFsq2Xyh/%E6%94%BF%E5%85%9A%E6%8A%95%E7
 王蕾
 岩木俊幸
 武田凌也
+
+### ミーティングの議事録
+https://resilient-raver-ce1.notion.site/3dbe6445578c4e40a159a2deb730cdb2?v=1bb4473ec16241f38a8e0f2261a9d910
+###振り返り
+https://resilient-raver-ce1.notion.site/c52d33c2e85840388221ca5757f6ff3e
